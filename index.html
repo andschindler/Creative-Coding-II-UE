@@ -1,69 +1,68 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DJ TOGETHER</title>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.x/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img
+          id="skyTexture"
+          src="https://cdn.glitch.global/deaad1b3-c137-49a3-b9f1-f506e217d6d8/AdobeStock_1038456312.jpeg?v=1750797579902"
+        />
+            ></a-asset-item>
+</a-assets>
 
-<head>
-  <meta charset="UTF-8" />
-  <title>DJ Together - Mixed Reality</title>
-  <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
-</head>
+      <a-gltf-model
+        id="micModel"
+        src="glbmic.glb"
+        position="1.599 1.215 -2.856"
+        scale="0.2 0.2 0.2"
+        rotation="0 10 10"
+        animation__float="property: object3D.position.y; to: 1.4; dir: alternate; dur: 5000; loop: true"
+      class="interactive"></a-gltf-model>
 
-<body style="margin: 0; overflow: hidden">
+      <a-gltf-model
+        id="drumsModel"
+        src="glbdrum.glb"
+        position="-2.210 1.193 -3.337"
+        scale="0.9 0.9 0.9"
+        rotation="0 20 0"
+        animation__float="property: object3D.position.y; to: 1.23; dir: alternate; dur: 2000; loop: true"
+        class="interactive"></a-gltf-model>
 
+      <a-gltf-model
+        id="guitarModel"
+        src="glbguitar.glb"
+        position="1.951 1.5 -2.158"
+        scale="0.1 0.1 0.1"
+        rotation="-20 -58.010 20"
+        animation__float="property: object3D.position.y; to: 1.4; dir: alternate; dur: 2000; loop: true"
+      class="interactive"></a-gltf-model>
 
-    <button id="toggleSkyBtn" style="position: absolute; top: 10px; left: 10px; z-index: 999">
-      Sky Ein/Aus
-    </button>
+      <a-gltf-model id="question" src="glbquestionmark.glb" position="0 1 -3" scale="0.3 0.3 0.3" animation__float="property: object3D.rotation.y; to: 2000; dir: alternate; dur: 20000; loop: true" class="interactive"></a-gltf-model>
 
-    <a-scene embeddedAdd vr-mode-ui="enabled: false" renderer="colorManagement: true;"xr-mode="immersive-ar"
-    raycaster="objects: .interactive" cursor="rayOrigin: mouse"
-    xr-session-init="{ 'optionalFeatures': ['dom-overlay'], 'domOverlay': { 'root': document.body } }">
+      <a-gltf-model id="djtogether" src="glbtitle.glb" position="0 1.65 -3" scale="0.3 0.3 0.3" rotation="0 0 0"
+      animation__float="property: object3D.position.y; to: 1.75; dir: alternate; dur: 5000; loop: true"></a-gltf-model>
 
-    <a-assets>      <!--Alle Assets-->
+      
+      <a-entity
+      id="helptext" text="align: center; color: #000000; height: 0.41; letterSpacing: -4.24; value: Turn around and control the instruments with a single tap!; width: 0.82"
+      scale="2 2 2" position="0 1.4 -3" visible="false"></a-entity>
 
-        <img id="mySkyTexture"
-          src="https://cdn.glitch.global/deaad1b3-c137-49a3-b9f1-f506e217d6d8/AdobeStock_1038456312.jpeg?v=1750797579902" />
-      <a-asset-item id="text"
-        src="https://cdn.glitch.global/deaad1b3-c137-49a3-b9f1-f506e217d6d8/untitled.glb?v=1750867542167"></a-asset-item>
-      <a-asset-item id="mic"
-        src="glbmic.glb"></a-asset-item>
-      <a-asset-item id="guitar"
-        src="glbguitar.glb"></a-asset-item>
-      <a-asset-item id="drums"
-        src="glbdrum.glb"></a-asset-item>
-        <a-asset-item id="question"
-        src="https://cdn.glitch.global/df72b162-7584-480e-b6d2-487faec09dca/question.glb?v=1751313028627"></a-asset-item>
-    </a-assets>
+      <a-entity light="color: #DA33FF; intensity: 1.5" position="-1 1 0"></a-entity>
+      <a-entity light="color: #33CAFF; intensity: 1.5" position="1 1 0"></a-entity>
+      <a-entity id="light" position="1.3 1.6 0.3" light="angle: 17.71; decay: 1.56; type: spot"
+      animation="property: position; to: -1.3 1.6 0.3; dur: 4000; loop: true; dir: alternate">
+    </a-entity>
+      <a-light type="ambient" color="#FFF"></a-light>
+      <a-camera position="0 1.6 -2" cursor="fuse: false; rayOrigin: mouse"></a-camera>
+      <a-sky src="#skyTexture" rotation="0 90 0"></a-sky>
+    </a-scene>
 
-<!--Lights und Sky-->
-<a-sky id="mysky" src="#mySkyTexture" rotation="0 90 0" visible="true"></a-sky>
-<!-- Weißes Hauptlicht (Key Light) -->
-<a-entity light="type: directional; color: #FFFFFF; intensity: 1.0"
-          position="0 5 2"></a-entity>
-
-<!-- Sanftes Himmel/Boden-Licht (Fülllicht) -->
-<a-entity light="type: hemisphere;
-                 skyColor: #FFFFFF;
-                 groundColor: #888888;
-                 intensity: 0.6"></a-entity>
-
-<!-- Dein Ambient ein bisschen anheben -->
-<a-light type="ambient"
-         color="#FFFFFF"
-         intensity="0.2"></a-light>
-
-<a-entity light="color: #DA33FF; intensity: 1.5" position="-1 1 0"></a-entity>
-<a-entity light="color: #33CAFF; intensity: 1.5" position="1 1 0"></a-entity>
-<a-entity id="light" position="1.3 1.6 0.3" light="angle: 17.71; decay: 1.56; type: spot"
-  animation="property: position; to: -1.3 1.6 0.3; dur: 4000; loop: true; dir: alternate"></a-entity>
-
-
-
-<!--Szene-->
-
-<a-gltf-model id="micModel" src="#mic" position="1.5 1.2 -2.85" scale="0.2 0.2 0.2"
-class="interactive"></a-gltf-model>
-
-<a-gltf-model id="guitarModel" src="#guitar" position="2 1.5 -2" scale="0.1 0.1 0.1"
-class="interactive"></a-gltf-model>
-
-<script src="script.js"></script>
+    <!-- Externe JavaScript-Datei einbinden -->
+    <script src="script.js"></script>
