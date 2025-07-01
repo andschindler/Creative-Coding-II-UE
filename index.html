@@ -50,9 +50,29 @@
       animation__float="property: object3D.position.y; to: 1.75; dir: alternate; dur: 5000; loop: true"></a-gltf-model>
 
       
-      <a-entity
-      id="helptext" text="align: center; color: #000000; height: 0.41; letterSpacing: -4.24; value: Turn around and control the instruments with a single tap!; width: 0.82"
-      scale="2 2 2" position="0 1.4 -3" visible="false"></a-entity>
+      <a-entity id="helptext-wrapper" position="0 1.4 -3" visible="false">
+        <!-- halbtransparente Hintergrund-Ebene -->
+        <a-plane 
+          width="1.5" 
+          height="0.18" 
+          color="#FFFFFF" 
+          opacity="0.1" 
+          position="0 0 0">
+        </a-plane>
+        <!-- dein eigentlicher Text, leicht vor der Ebene -->
+        <a-entity 
+          id="helptext" 
+          text="align: center; 
+                color: #000000; 
+                height: 0.41; 
+                letterSpacing: -4.24; 
+                value: Turn around and control the instruments with a single tap!; 
+                width: 0.82" 
+          scale="2 2 2" 
+          position="0 0 0.01">
+        </a-entity>
+      </a-entity>
+
 
       <a-entity light="color: #DA33FF; intensity: 1.5" position="-1 1 0"></a-entity>
       <a-entity light="color: #33CAFF; intensity: 1.5" position="1 1 0"></a-entity>

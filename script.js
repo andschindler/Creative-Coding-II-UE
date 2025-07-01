@@ -137,7 +137,7 @@ const audioUrls = {
 
 // Fragezeichen-Model und zugehörigen Text holen
 const questionModel = document.querySelector('#question');
-const questionText  = document.querySelector('#helptext');
+const questionText  = document.querySelector('#helptext-wrapper');
 
 // Klick-Listener: sichtbaren Zustand umschalten
 questionModel.addEventListener('click', () => {
